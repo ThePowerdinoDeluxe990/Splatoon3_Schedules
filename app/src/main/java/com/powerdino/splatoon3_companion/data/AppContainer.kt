@@ -1,6 +1,9 @@
 package com.powerdino.splatoon3_companion.data
 
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.powerdino.splatoon3_companion.service.RetroFitService
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -9,10 +12,10 @@ interface AppContainer {
 }
 
 class DefaultAppContainer:AppContainer{
-    private val baseUrl = "https://splatoon3.ink/"
+    private val baseUrl = "https://splatoon.oatmealdome.me/"
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(Json{ ignoreUnknownKeys = true}.asConverterFactory("application/json".toMediaType()))
         .baseUrl(baseUrl)
         .build()
 

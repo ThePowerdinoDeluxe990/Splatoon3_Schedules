@@ -9,13 +9,13 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.powerdino.splatoon3_companion.Model.Data
 import com.powerdino.splatoon3_companion.SplatoonAppContainer
 import com.powerdino.splatoon3_companion.data.SplatoonRepository
+import com.powerdino.splatoon3_companion.model.Data
 import kotlinx.coroutines.launch
 
 sealed interface NetworkState {
-    data class Success(val data:Data):NetworkState
+    data class Success(val data: Data):NetworkState
     object Error:NetworkState
     object Loading:NetworkState
 }

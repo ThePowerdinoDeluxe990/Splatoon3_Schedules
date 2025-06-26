@@ -1,6 +1,6 @@
 package com.powerdino.splatoon3_companion.data
 
-import com.powerdino.splatoon3_companion.Model.Data
+import com.powerdino.splatoon3_companion.model.Data
 import com.powerdino.splatoon3_companion.service.RetroFitService
 
 interface SplatoonRepository {

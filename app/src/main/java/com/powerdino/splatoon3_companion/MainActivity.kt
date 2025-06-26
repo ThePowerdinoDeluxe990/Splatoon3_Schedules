@@ -25,17 +25,12 @@ class MainActivity : ComponentActivity() {
 
                 when(NetworkStateAndInfo){
                     is NetworkState.Success -> {
-                        Log.i("debug", NetworkStateAndInfo.data.vsStages.nodes.toString())
-                        NetworkStateAndInfo.data.vsStages.nodes.forEach{ data ->
-                            Log.i("Message", data.name)
+                            Log.i("title",NetworkStateAndInfo.data.normal.toString())
                         }
-                    }
 
-                    else -> {
-                        Text("Caca")
-                    }
-
+                    else -> Log.i("nada","nada")
                 }
+
             }
         }
     }

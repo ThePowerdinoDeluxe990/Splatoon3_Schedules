@@ -1,8 +1,8 @@
 package com.powerdino.splatoon3_companion.service
-import com.powerdino.splatoon3_companion.Model.Data
+import com.powerdino.splatoon3_companion.model.Data
 import retrofit2.http.GET
 
 interface RetroFitService{
-        @GET("data/schedules.json")
+        @GET("api/v1/three/versus/phases?count=3")
         suspend fun getData(): Data
 }
