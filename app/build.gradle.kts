@@ -41,7 +41,8 @@ android {
 }
 
 dependencies {
-      implementation(libs.converter.gson)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.converter.gson)
     implementation(libs.coil.kt.coil.compose)
     // Retrofit
     implementation(libs.retrofit2.kotlinx.serialization.converter)
