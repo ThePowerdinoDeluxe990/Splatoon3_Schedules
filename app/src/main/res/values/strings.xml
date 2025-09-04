@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Splatoon3_Companion</string>
+    <string name="app_name">Splatoon 3 schedules</string>
     <string name="current">Current</string>
     <string name="next">Upcoming</string>
     <string name="regular">Regular Battle</string>
