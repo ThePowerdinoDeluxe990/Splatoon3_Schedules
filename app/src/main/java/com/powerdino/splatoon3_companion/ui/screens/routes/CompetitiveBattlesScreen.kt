@@ -17,18 +17,18 @@ import com.powerdino.splatoon3_companion.ui.composables.MapCard
 import com.powerdino.splatoon3_companion.ui.composables.TextSchedule
 
 @Composable
-fun RegularBattlesScreen (
+fun CompetitiveBattlesScreen (
     splatoonNormal: Data
 ){
     Column {
-        Text("Normal Stages")
+        Text("Competitive Stages")
         LazyColumn {
             itemsIndexed(splatoonNormal.normal){index, items ->
-                Text(items.regular.rule)
+                Text(items.bankara.rule)
 
                 TextSchedule(index)
 
-                items.regular.stages.forEach {it ->
+                items.bankara.stages.forEach {it ->
                     Box(
                         modifier = Modifier.padding(horizontal = 8.dp)
                     ){
@@ -36,6 +36,22 @@ fun RegularBattlesScreen (
                             mapName = stringResource(listOfMpMaps[it-1].nameState),
                             mapImage = listOfMpMaps[it-1].imageState
                         )
+
+                    }
+                    Spacer(
+                        modifier = Modifier.padding(12.dp)
+                    )
+                }
+
+                items.bankaraOpen.stages.forEach { it ->
+                    Box(
+                        modifier = Modifier.padding(horizontal = 8.dp)
+                    ){
+                        MapCard(
+                            mapName = stringResource(listOfMpMaps[it-1].nameState),
+                            mapImage = listOfMpMaps[it-1].imageState
+                        )
+
                     }
                     Spacer(
                         modifier = Modifier.padding(12.dp)

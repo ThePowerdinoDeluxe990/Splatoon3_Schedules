@@ -50,6 +50,7 @@ fun MapCard(
 
     }
 }
+
 @Preview(
     showBackground = true,
     name = "Light",

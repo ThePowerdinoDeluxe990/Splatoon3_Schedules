@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Splatoon3_Companion</string>
+    <string name="current">Current</string>
+    <string name="next">Upcoming</string>
+    <string name="regular">Regular Battle</string>
+    <string name="comp">Competitive</string>
+    <string name="salmon_run">Salmon Run</string>
 
     <string name="stage1">Scorch Gorge</string>
     <string name="stage2">Eeltail Alley</string>
