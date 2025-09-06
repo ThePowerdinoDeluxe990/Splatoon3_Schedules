@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.powerdino.splatoon3_companion.data.lists.listOfMpMaps
 import com.powerdino.splatoon3_companion.model.Data
 import com.powerdino.splatoon3_companion.ui.composables.MapCard
+import com.powerdino.splatoon3_companion.ui.composables.SchedulesTimeComposables
 import com.powerdino.splatoon3_companion.ui.composables.TextCompetitiveMode
 import com.powerdino.splatoon3_companion.ui.composables.TextSchedule
 
@@ -28,13 +29,17 @@ fun CompetitiveBattlesScreen (
             itemsIndexed(splatoonNormal.normal){index, items ->
 
                 TextSchedule(index)
-
+                SchedulesTimeComposables(
+                    startsAt = items.startTime,
+                    endsAt = items.endTime
+                )
                 Text(
                     text="Anarchy Battle (Series)",
                     style= MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(8.dp)
                 )
+
 
                 TextCompetitiveMode(items.bankara.rule)
                 items.bankara.stages.forEach {it ->

@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.powerdino.splatoon3_companion.data.lists.listOfMpMaps
 import com.powerdino.splatoon3_companion.model.Data
 import com.powerdino.splatoon3_companion.ui.composables.MapCard
+import com.powerdino.splatoon3_companion.ui.composables.SchedulesTimeComposables
 import com.powerdino.splatoon3_companion.ui.composables.TextSchedule
 
 @Composable
@@ -26,7 +27,10 @@ fun RegularBattlesScreen (
                 //Text(items.regular.rule)
 
                 TextSchedule(index)
-
+                SchedulesTimeComposables(
+                    startsAt = items.startTime,
+                    endsAt = items.endTime
+                )
                 items.regular.stages.forEach {it ->
                     Box(
                         modifier = Modifier.padding(horizontal = 8.dp)

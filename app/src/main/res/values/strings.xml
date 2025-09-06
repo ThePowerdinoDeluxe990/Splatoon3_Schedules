@@ -5,6 +5,7 @@
     <string name="regular">Regular Battle</string>
     <string name="comp">Competitive</string>
     <string name="salmon_run">Salmon Run</string>
-
+    <string name="start">Starts at: </string>
+    <string name="end">Ends at: </string>
 
 </resources>
