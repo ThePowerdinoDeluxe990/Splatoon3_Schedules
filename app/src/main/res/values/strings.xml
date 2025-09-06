@@ -6,30 +6,5 @@
     <string name="comp">Competitive</string>
     <string name="salmon_run">Salmon Run</string>
 
-    <string name="stage1">Scorch Gorge</string>
-    <string name="stage2">Eeltail Alley</string>
-    <string name="stage3">Hagglefish Market</string>
-    <string name="stage4">Undertow Spillway</string>
-    <string name="stage5">Um\'ami Ruins</string>
-    <string name="stage6">Mincemeat Metalworks</string>
-    <string name="stage7">Brinewater Springs</string>
-    <string name="stage8">Barnacle &amp; Dime</string>
-    <string name="stage9">Flounder Heights</string>
-    <string name="stage10">Hammerhead Bridge</string>
-    <string name="stage11">Museum d\'Alfonsino</string>
-    <string name="stage12">Mahi-Mahi Resort</string>
-    <string name="stage13">Inkblot Art Academy</string>
-    <string name="stage14">Sturgeon Shipyard</string>
-    <string name="stage15">MakoMart</string>
-    <string name="stage16">Wahoo World</string>
-    <string name="stage17">Humpback Pump Track</string>
-    <string name="stage18">Manta Maria</string>
-    <string name="stage19">Crableg Capital</string>
-    <string name="stage20">Shipshape Cargo Co.</string>
-    <string name="stage21">Robo ROM-en</string>
-    <string name="stage22">Bluefin Depot</string>
-    <string name="stage23">Marlin Airport</string>
-    <string name="stage24">Lemuria Hub</string>
-    <string name="stage25">Grand Splatlands Bowl</string>
-    <string name="stage26">Urchin Underpass</string>
+
 </resources>

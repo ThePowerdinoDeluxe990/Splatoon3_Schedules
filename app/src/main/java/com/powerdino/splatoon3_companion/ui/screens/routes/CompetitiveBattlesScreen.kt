@@ -13,9 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.powerdino.splatoon3_companion.data.listOfMpMaps
+import com.powerdino.splatoon3_companion.data.lists.listOfMpMaps
 import com.powerdino.splatoon3_companion.model.Data
 import com.powerdino.splatoon3_companion.ui.composables.MapCard
+import com.powerdino.splatoon3_companion.ui.composables.TextCompetitiveMode
 import com.powerdino.splatoon3_companion.ui.composables.TextSchedule
 
 @Composable
@@ -35,7 +36,7 @@ fun CompetitiveBattlesScreen (
                     modifier = Modifier.padding(8.dp)
                 )
 
-                Text(items.bankara.rule)
+                TextCompetitiveMode(items.bankara.rule)
                 items.bankara.stages.forEach {it ->
                     Box(
                         modifier = Modifier.padding(horizontal = 8.dp)
@@ -58,7 +59,7 @@ fun CompetitiveBattlesScreen (
                     modifier = Modifier.padding(8.dp)
                 )
 
-                Text(items.bankaraOpen.rule)
+                TextCompetitiveMode(items.bankaraOpen.rule)
                 items.bankaraOpen.stages.forEach { it ->
                     Box(
                         modifier = Modifier.padding(horizontal = 8.dp)
