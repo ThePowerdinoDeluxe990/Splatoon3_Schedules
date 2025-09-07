@@ -27,10 +27,12 @@ fun RegularBattlesScreen (
                 //Text(items.regular.rule)
 
                 TextSchedule(index)
+
                 SchedulesTimeComposables(
                     startsAt = items.startTime,
                     endsAt = items.endTime
                 )
+
                 items.regular.stages.forEach {it ->
                     Box(
                         modifier = Modifier.padding(horizontal = 8.dp)

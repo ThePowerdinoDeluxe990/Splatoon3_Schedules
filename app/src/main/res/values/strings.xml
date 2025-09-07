@@ -7,5 +7,8 @@
     <string name="salmon_run">Salmon Run</string>
     <string name="start">Starts at: </string>
     <string name="end">Ends at: </string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">See normal Schedules on your home screen</string>
 
 </resources>

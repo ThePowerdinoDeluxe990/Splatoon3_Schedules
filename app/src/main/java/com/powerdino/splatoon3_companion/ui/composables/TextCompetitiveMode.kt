@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -43,18 +44,20 @@ fun TextCompetitiveMode(
         modifier = Modifier.padding(
             vertical = 4.dp,
             horizontal = 8.dp
-        )
+        ),
+        verticalAlignment = Alignment.CenterVertically
     ){
         Text(
             text= nameOfMode,
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
         )
 
         Image(
             painter = painterResource(imageOfMode),
             contentDescription = nameOfMode,
-            modifier = Modifier.padding(horizontal = 8.dp)
+            modifier = Modifier
+                .padding(horizontal = 8.dp)
         )
     }
 }
