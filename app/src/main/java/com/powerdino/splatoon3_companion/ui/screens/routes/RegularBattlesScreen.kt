@@ -8,8 +8,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.powerdino.splatoon3_companion.R
 import com.powerdino.splatoon3_companion.data.lists.listOfMpMaps
 import com.powerdino.splatoon3_companion.model.Data
 import com.powerdino.splatoon3_companion.ui.composables.MapCard
@@ -20,7 +22,11 @@ import com.powerdino.splatoon3_companion.ui.composables.TextSchedule
 fun RegularBattlesScreen (
     splatoonNormal: Data
 ){
-    Column {
+    Column (
+        modifier = Modifier.testTag(
+            stringResource(R.string.testTagRegular)
+        )
+    ){
         //Text("Normal Stages")
         LazyColumn {
             itemsIndexed(splatoonNormal.normal){index, items ->

@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.powerdino.splatoon3_companion.R
 import com.powerdino.splatoon3_companion.data.lists.listOfMpMaps
 import com.powerdino.splatoon3_companion.model.Data
 import com.powerdino.splatoon3_companion.ui.composables.MapCard
@@ -34,7 +35,7 @@ fun CompetitiveBattlesScreen (
                     endsAt = items.endTime
                 )
                 Text(
-                    text="Anarchy Battle (Series)",
+                    text=stringResource(R.string.anarchy_open),
                     style= MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(8.dp)
