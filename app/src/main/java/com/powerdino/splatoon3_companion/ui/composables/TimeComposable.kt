@@ -2,7 +2,6 @@ package com.powerdino.splatoon3_companion.ui.composables
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.text.font.FontWeight
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
@@ -17,6 +16,5 @@ fun TimeComposable(
         text = instant.toString()
             .substringAfterLast("T")
             .replace("Z",""),
-        fontWeight = FontWeight.Bold
     )
 }

@@ -23,9 +23,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.navigation3.ui.NavDisplay
 import com.powerdino.splatoon3_companion.R
 import com.powerdino.splatoon3_companion.model.Data
 import com.powerdino.splatoon3_companion.ui.screens.routes.CompetitiveBattlesScreen
@@ -37,7 +37,7 @@ import com.powerdino.splatoon3_companion.ui.screens.routes.RegularBattlesScreen
 fun SuccessScreen(
     splatoonData: Data
 ){
-    val navController = rememberNavController()
+    val backStack = rememberNavBackStack(RegularBattlesScreen)
 
     var bottomSelected by rememberSaveable {
         mutableIntStateOf(0)
@@ -70,7 +70,7 @@ fun SuccessScreen(
                         selected = bottomSelected == index,
                         onClick = {
                             bottomSelected = index
-                            navController.navigate(item.route)
+                            backStack.add(item.route)
                         },
                         label = {
                             Text(stringResource(item.title))
@@ -90,30 +90,29 @@ fun SuccessScreen(
             }
         }
     ){ innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = RegularBattlesScreen
-        ){
-            composable<RegularBattlesScreen>{
-                Box(
-                    modifier = Modifier.padding(innerPadding)
-                ){
-                    RegularBattlesScreen(
-                        splatoonNormal = splatoonData
-                    )
+        NavDisplay(
+            backStack=backStack,
+            onBack = {backStack.removeLastOrNull()},
+            entryProvider = entryProvider {
+                entry<RegularBattlesScreen>{
+                    Box(
+                        modifier = Modifier.padding(innerPadding)
+                    ){
+                        RegularBattlesScreen(
+                            splatoonNormal = splatoonData
+                        )
+                    }
                 }
-
-            }
-
-            composable<CompetitiveBattlesScreen>{
-                Box(
-                    modifier = Modifier.padding(innerPadding)
-                ){
-                    CompetitiveBattlesScreen(
-                        splatoonNormal = splatoonData
-                    )
+                entry<CompetitiveBattlesScreen>{
+                    Box(
+                        modifier = Modifier.padding(innerPadding)
+                    ){
+                        CompetitiveBattlesScreen(
+                            splatoonNormal = splatoonData
+                        )
+                    }
                 }
             }
-        }
+        )
     }
 }

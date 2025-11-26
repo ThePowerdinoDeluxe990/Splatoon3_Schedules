@@ -1,44 +1,36 @@
 package com.powerdino.splatoon3_companion.ui.composables
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.CalendarToday
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.powerdino.splatoon3_companion.R
 
 @Composable
 fun SchedulesTimeComposables(
     startsAt:String,
     endsAt:String
 ){
-    Column(
+    Row(
         modifier = Modifier.padding(
-            vertical = 1.dp,
-            horizontal = 8.dp
-        )
+            vertical = 0.5.dp,
+            horizontal = 10.dp,
+        ),
+        verticalAlignment = Alignment.CenterVertically
     ){
-        Row(){
-            Text(
-                text = stringResource(R.string.start ) + " ",
-                fontWeight = FontWeight.Bold,
-                fontStyle = FontStyle.Italic
-            )
-            TimeComposable(startsAt)
-        }
-
-        Row(){
-            Text(
-                text = stringResource(R.string.end ) + " ",
-                fontWeight = FontWeight.Bold,
-                fontStyle = FontStyle.Italic
-            )
-            TimeComposable(endsAt)
-        }
+        Icon(
+            imageVector = Icons.Rounded.CalendarToday,
+            contentDescription = "Calendar",
+            modifier = Modifier.padding(end = 2.dp,
+                bottom = 2.dp)
+        )
+        TimeComposable(startsAt)
+        Text(" - ")
+        TimeComposable(endsAt)
     }
 }
