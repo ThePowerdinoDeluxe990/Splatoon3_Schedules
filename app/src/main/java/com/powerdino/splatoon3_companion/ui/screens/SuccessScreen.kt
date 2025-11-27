@@ -51,7 +51,7 @@ fun SuccessScreen(
     Scaffold (
         topBar = {
             CenterAlignedTopAppBar(
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
@@ -92,7 +92,13 @@ fun SuccessScreen(
     ){ innerPadding ->
         NavDisplay(
             backStack=backStack,
-            onBack = {backStack.removeLastOrNull()},
+            onBack ={
+               backStack.removeLastOrNull()
+                when(backStack.last()){
+                   RegularBattlesScreen -> bottomSelected =0
+                   CompetitiveBattlesScreen ->  bottomSelected = 1
+               }
+             },
             entryProvider = entryProvider {
                 entry<RegularBattlesScreen>{
                     Box(

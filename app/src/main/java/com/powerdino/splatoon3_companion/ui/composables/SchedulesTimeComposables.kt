@@ -15,13 +15,15 @@ import androidx.compose.ui.unit.dp
 fun SchedulesTimeComposables(
     startsAt:String,
     endsAt:String
-){
+) {
+
     Row(
         modifier = Modifier.padding(
             vertical = 0.5.dp,
             horizontal = 10.dp,
         ),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+
     ){
         Icon(
             imageVector = Icons.Rounded.CalendarToday,
