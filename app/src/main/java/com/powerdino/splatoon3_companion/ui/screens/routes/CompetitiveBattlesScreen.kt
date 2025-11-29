@@ -1,14 +1,18 @@
 package com.powerdino.splatoon3_companion.ui.screens.routes
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -34,41 +38,65 @@ fun CompetitiveBattlesScreen (
                     startsAt = items.startTime,
                     endsAt = items.endTime
                 )
-                Text(
-                    text=stringResource(R.string.anarchy_open),
-                    style= MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(8.dp)
-                )
-
-
-                TextCompetitiveMode(items.bankara.rule)
-                items.bankara.stages.forEach {it ->
-                    Box(
-                        modifier = Modifier.padding(horizontal = 8.dp)
-                    ){
-                        MapCard(
-                            mapName = stringResource(listOfMpMaps[it-1].nameState),
-                            mapImage = listOfMpMaps[it-1].imageState
+                Row(){
+                    Text(
+                        text=stringResource(R.string.anarchy_open),
+                        style= MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(
+                            bottom = 8.dp,
+                            top = 8.dp,
+                            start = 8.dp,
+                            end = 2.dp
                         )
+                    )
+                    TextCompetitiveMode(items.bankara.rule)
+                }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    items.bankara.stages.forEach { it ->
+                        Box(
+                            modifier = Modifier
+                                .padding(horizontal = 4.dp)
+                                .weight(1f)
+                        ) {
+                            MapCard(
+                                mapName = stringResource(listOfMpMaps[it - 1].nameState),
+                                mapImage = listOfMpMaps[it - 1].imageState
+                            )
+
+                        }
 
                     }
-                    Spacer(
-                        modifier = Modifier.padding(12.dp)
+
+                }
+                Spacer(
+                    modifier = Modifier.padding(12.dp)
+                )
+                Row{
+                    Text(
+                        text="Anarchy Battle (Open)",
+                        style= MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(8.dp)
                     )
+
+                    TextCompetitiveMode(items.bankaraOpen.rule)
                 }
 
-                Text(
-                    text="Anarchy Battle (Open)",
-                    style= MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(8.dp)
-                )
-
-                TextCompetitiveMode(items.bankaraOpen.rule)
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ){
                 items.bankaraOpen.stages.forEach { it ->
                     Box(
-                        modifier = Modifier.padding(horizontal = 8.dp)
+                        modifier = Modifier
+                            .padding(horizontal = 4.dp)
+                            .weight(1f)
                     ){
                         MapCard(
                             mapName = stringResource(listOfMpMaps[it-1].nameState),
@@ -76,10 +104,13 @@ fun CompetitiveBattlesScreen (
                         )
 
                     }
-                    Spacer(
-                        modifier = Modifier.padding(12.dp)
-                    )
+
                 }
+
+                }
+                Spacer(
+                    modifier = Modifier.padding(12.dp)
+                )
             }
         }
     }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
@@ -24,6 +25,7 @@ fun MapCard(
     mapName:String,
     mapImage:Int,
 ){
+
     ElevatedCard (
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
@@ -32,18 +34,21 @@ fun MapCard(
             containerColor = MaterialTheme.colorScheme.surfaceVariant,
         )
     ){
-        Column{
+        Column(
+        ){
             Image(
                 painter = painterResource(mapImage),
                 contentDescription = mapName,
-                modifier = Modifier.fillMaxWidth(),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxWidth()
+                    .size(128.dp)
             )
             Text(
                 text=mapName,
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(12.dp)
+                modifier = Modifier.padding(12.dp),
+
             )
 
         }

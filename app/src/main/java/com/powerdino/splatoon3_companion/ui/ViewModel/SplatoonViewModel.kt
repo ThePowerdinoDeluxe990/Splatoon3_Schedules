@@ -34,13 +34,14 @@ class SplatoonViewModel(private val splatoonRepository: SplatoonRepository): Vie
             splatoonNetworkState= NetworkState.Loading
             splatoonNetworkState = try{
                 NetworkState.Success(
-                    splatoonRepository.getSplatoonData()
+                    splatoonRepository.getSplatoonData(),
                 )
             }catch (e:java.io.IOException){
                 NetworkState.Error
             }
         }
     }
+
 
     companion object{
         val Factory:ViewModelProvider.Factory = viewModelFactory {

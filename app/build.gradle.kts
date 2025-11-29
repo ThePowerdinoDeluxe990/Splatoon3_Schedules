@@ -48,7 +48,7 @@ android {
 dependencies {
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.navigation3.runtime)
-
+    implementation(kotlin("reflect"))
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
     implementation(libs.converter.gson)
     implementation(libs.coil.kt.coil.compose)

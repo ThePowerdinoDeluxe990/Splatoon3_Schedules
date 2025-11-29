@@ -14,7 +14,9 @@ fun NetworkComposable(
 ){
     when(networkState){
         is NetworkState.Success -> {
-            SuccessScreen(splatoonData = networkState.data)
+            SuccessScreen(
+                splatoonData = networkState.data,
+            )
         }
         is NetworkState.Loading -> {
             LoadingScreen()

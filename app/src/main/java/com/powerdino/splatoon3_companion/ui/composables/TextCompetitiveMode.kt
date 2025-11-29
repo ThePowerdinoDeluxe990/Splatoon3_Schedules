@@ -50,7 +50,7 @@ fun TextCompetitiveMode(
     Row(
         modifier = Modifier.padding(
             vertical = 4.dp,
-            horizontal = 8.dp
+            horizontal = 2.dp
         ),
         verticalAlignment = Alignment.CenterVertically
     ){

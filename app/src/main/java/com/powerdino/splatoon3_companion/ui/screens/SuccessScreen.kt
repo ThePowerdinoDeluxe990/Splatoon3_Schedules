@@ -35,9 +35,13 @@ import com.powerdino.splatoon3_companion.ui.screens.routes.RegularBattlesScreen
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SuccessScreen(
-    splatoonData: Data
+    splatoonData: Data,
 ){
     val backStack = rememberNavBackStack(RegularBattlesScreen)
+
+
+
+
 
     var bottomSelected by rememberSaveable {
         mutableIntStateOf(0)
@@ -105,7 +109,7 @@ fun SuccessScreen(
                         modifier = Modifier.padding(innerPadding)
                     ){
                         RegularBattlesScreen(
-                            splatoonNormal = splatoonData
+                            splatoonNormal = splatoonData,
                         )
                     }
                 }
