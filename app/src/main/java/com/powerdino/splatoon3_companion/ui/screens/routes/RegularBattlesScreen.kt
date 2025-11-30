@@ -26,7 +26,6 @@ import com.powerdino.splatoon3_companion.ui.composables.TextSchedule
 fun RegularBattlesScreen (
     splatoonNormal: Data,
 ){
-
     Column (
         modifier = Modifier.testTag(
             stringResource(R.string.testTagRegular)

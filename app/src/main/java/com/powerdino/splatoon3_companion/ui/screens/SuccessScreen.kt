@@ -39,10 +39,6 @@ fun SuccessScreen(
 ){
     val backStack = rememberNavBackStack(RegularBattlesScreen)
 
-
-
-
-
     var bottomSelected by rememberSaveable {
         mutableIntStateOf(0)
     }
