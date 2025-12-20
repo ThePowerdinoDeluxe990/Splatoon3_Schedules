@@ -6,6 +6,8 @@ import androidx.compose.ui.unit.dp
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
 import androidx.glance.GlanceTheme
+import androidx.glance.Image
+import androidx.glance.ImageProvider
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.provideContent
 import androidx.glance.background
@@ -15,12 +17,20 @@ import androidx.glance.layout.Column
 import androidx.glance.layout.Row
 import androidx.glance.layout.fillMaxWidth
 import androidx.glance.layout.padding
+import androidx.glance.layout.size
+import androidx.glance.preview.ExperimentalGlancePreviewApi
 import androidx.glance.text.FontWeight
 import androidx.glance.text.Text
 import androidx.glance.text.TextStyle
+import com.powerdino.splatoon3_companion.R
 import com.powerdino.splatoon3_companion.data.DefaultAppContainer
 import com.powerdino.splatoon3_companion.data.lists.listOfMpMaps
+import com.powerdino.splatoon3_companion.model.Bankara
+import com.powerdino.splatoon3_companion.model.BankaraOpen
+import com.powerdino.splatoon3_companion.model.League
 import com.powerdino.splatoon3_companion.model.Normal
+import com.powerdino.splatoon3_companion.model.Regular
+import com.powerdino.splatoon3_companion.model.X
 import com.powerdino.splatoon3_companion.widgets.composables.MapCardWidget
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
@@ -32,7 +42,7 @@ class SplatoonAppWidget : GlanceAppWidget() {
         val splatoonData = appRepository.splatoonRepository.getSplatoonData()
 
         provideContent {
-            GlanceTheme() {
+            GlanceTheme{
                 MyContent(
                     maps = splatoonData.normal
                 )
@@ -40,71 +50,162 @@ class SplatoonAppWidget : GlanceAppWidget() {
        }
     }
 
-@OptIn(ExperimentalTime::class)
-@Composable
-private fun MyContent(
-    maps: List<Normal>
-){
+    // Very WIP I need to rewrite and redesign this
+    @OptIn(ExperimentalTime::class)
+    @Composable
+    private fun MyContent(
+        maps: List<Normal>
+    ){
 
-  maps.forEachIndexed { index, items ->
-      val instant = Instant.parse(items.startTime)
-      val secondInstant = Instant.parse(items.endTime)
-      if (index == 0) {
-          Column(
-              modifier = GlanceModifier.background(
-                  GlanceTheme.colors.background
-              )
-          ) {
-              Row(
-                  modifier = GlanceModifier.padding(start = 2.dp)
-                      .fillMaxWidth() ,
-                  verticalAlignment = Alignment.CenterVertically,
-                  horizontalAlignment = Alignment.CenterHorizontally
-              ) {
-                  Text(
-                      text = instant.toString()
-                          .substringAfterLast("T")
-                          .replace("Z",""),
-                      style = TextStyle(
-                          color = GlanceTheme.colors.onSurface,
-                          fontWeight = FontWeight.Bold
-                      )
-                  )
-                  Text(" ")
-                  Text(
-                      text = secondInstant.toString()
-                          .substringAfterLast("T")
-                          .replace("Z",""),
-                      style = TextStyle(
-                          color = GlanceTheme.colors.onSurface,
-                          fontWeight = FontWeight.Bold
-                      )
-                  )
-              }
+        Column {
+            Image(
+                provider = ImageProvider(R.drawable.turfwar),
+                contentDescription = "Paint",
+                modifier = GlanceModifier
+                    .size(32.dp)
+                    .fillMaxWidth()
+                    .padding(4.dp)
+            )
+            maps.forEachIndexed { index, items ->
+                if(index <=2 ){
+                    val instant = Instant.parse(items.startTime)
+                    val secondInstant = Instant.parse(items.endTime)
+                    Column(
+                        modifier = GlanceModifier.background(
+                            GlanceTheme.colors.widgetBackground
+                        )
+                    ) {
+                        Row(
+                            modifier = GlanceModifier.padding(
+                                bottom = 3.dp
+                            )
+                                .fillMaxWidth()
+                                .background(
+                                    color = GlanceTheme.colors.surface.getColor(
+                                        androidx.glance.LocalContext.current
+                                    )
+                                ),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Column(
+                                modifier = GlanceModifier.padding(
+                                    horizontal = 3.dp
+                                )
+                            ){
+                                Text(
+                                    text = instant.toString()
+                                        .substringAfterLast("T")
+                                        .replace("Z",""),
+                                    style = TextStyle(
+                                        color = GlanceTheme.colors.onSurface,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                )
+                                Text(
+                                    text = secondInstant.toString()
+                                        .substringAfterLast("T")
+                                        .replace("Z",""),
+                                    style = TextStyle(
+                                        color = GlanceTheme.colors.onSurface,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                )
+                            }
 
-              Row(
-                  verticalAlignment = Alignment.CenterVertically,
-                  horizontalAlignment = Alignment.CenterHorizontally,
-                  modifier = GlanceModifier.fillMaxWidth()
-                  ) {
-                  items.regular.stages.forEach { it ->
-                      Row() {
-                          Box(
-                              modifier = GlanceModifier.padding(horizontal = 4.dp)
-                          ) {
-                              MapCardWidget(
-                                  _root_ide_package_.androidx.glance.LocalContext.current.getString(
-                                      listOfMpMaps[it - 1].nameState
-                                  ),
+                            items.regular.stages.forEach { it ->
+                                Row {
+                                    Box{
+                                        MapCardWidget(
+                                            androidx.glance.LocalContext.current.getString(
+                                                listOfMpMaps[it - 1].nameState
+                                            ),
+                                            mapImage = listOfMpMaps[it - 1].imageState
+                                        )
+                                    }
+                                }
 
-                                  mapImage = listOfMpMaps[it - 1].imageState
-                              )
-                          }
-                      }
-                  }
-              }
-          }
-      }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
   }
-  }
+
+    @OptIn(ExperimentalGlancePreviewApi::class)
+    @Composable
+    @androidx.glance.preview.Preview
+    @androidx.glance.preview.Preview(
+        widthDp = 320,
+        heightDp = 320,
+
+    )
+    private fun Preview(){
+        GlanceTheme {
+            MyContent(
+                maps = previewList
+            )
+        }
+    }
 }
+
+val previewList =
+    listOf<Normal>(
+        Normal(
+            Bankara(
+                rule = "paint",
+                stages = listOf<Int>(6,7),
+            ),
+            BankaraOpen(
+                rule = "paint",
+                stages = listOf<Int>(6,7),
+            ),
+            endTime = "2025-12-20T10:00:00Z",
+            League(
+                eventId = "1",
+                eventType = "paint",
+                rule="paint",
+                stages = listOf<Int>()
+            ),
+            phaseId = "1",
+            Regular(
+                rule = "paint",
+                stages = listOf(6,7)
+            ),
+            startTime = "2025-12-20T10:00:00Z",
+            x = X(
+                rule = "paint",
+                stages = listOf(6,7)
+            )
+        ),
+        Normal(
+            Bankara(
+                rule = "paint",
+                stages = listOf<Int>(7,8),
+            ),
+            BankaraOpen(
+                rule = "paint",
+                stages = listOf<Int>(7,8),
+            ),
+            endTime = "2025-12-20T11:00:00Z",
+            League(
+                eventId = "1",
+                eventType = "paint",
+                rule="paint",
+                stages = listOf<Int>()
+            ),
+            phaseId = "1",
+            Regular(
+                rule = "paint",
+                stages = listOf(7,8)
+            ),
+            startTime = "2025-12-20T11:00:00Z",
+            x = X(
+                rule = "paint",
+                stages = listOf(7,8)
+            )
+        )
+    )
+
