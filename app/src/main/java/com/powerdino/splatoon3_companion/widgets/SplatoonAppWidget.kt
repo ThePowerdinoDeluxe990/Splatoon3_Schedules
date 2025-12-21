@@ -57,7 +57,11 @@ class SplatoonAppWidget : GlanceAppWidget() {
         maps: List<Normal>
     ){
 
-        Column {
+        Column (
+            modifier = GlanceModifier.background(
+                GlanceTheme.colors.widgetBackground
+            )
+        ){
             Image(
                 provider = ImageProvider(R.drawable.turfwar),
                 contentDescription = "Paint",
@@ -67,31 +71,21 @@ class SplatoonAppWidget : GlanceAppWidget() {
                     .padding(4.dp)
             )
             maps.forEachIndexed { index, items ->
-                if(index <=2 ){
+                if(index <2){
                     val instant = Instant.parse(items.startTime)
                     val secondInstant = Instant.parse(items.endTime)
-                    Column(
-                        modifier = GlanceModifier.background(
-                            GlanceTheme.colors.widgetBackground
-                        )
-                    ) {
+                    Column {
                         Row(
                             modifier = GlanceModifier.padding(
                                 bottom = 3.dp
-                            )
-                                .fillMaxWidth()
-                                .background(
-                                    color = GlanceTheme.colors.surface.getColor(
-                                        androidx.glance.LocalContext.current
-                                    )
-                                ),
+                            ).fillMaxWidth(),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Column(
                                 modifier = GlanceModifier.padding(
-                                    horizontal = 3.dp
-                                )
+                                    horizontal = 2.dp,
+                                ),
                             ){
                                 Text(
                                     text = instant.toString()
@@ -113,7 +107,7 @@ class SplatoonAppWidget : GlanceAppWidget() {
                                 )
                             }
 
-                            items.regular.stages.forEach { it ->
+                            items.regular.stages.forEach {
                                 Row {
                                     Box{
                                         MapCardWidget(
