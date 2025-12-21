@@ -84,7 +84,7 @@ class SplatoonAppWidget : GlanceAppWidget() {
                         ) {
                             Column(
                                 modifier = GlanceModifier.padding(
-                                    horizontal = 2.dp,
+                                    horizontal = 6.dp,
                                 ),
                             ){
                                 Text(

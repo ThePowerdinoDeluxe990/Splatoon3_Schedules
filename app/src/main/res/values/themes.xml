@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Splatoon3_Companion" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Splatoon3_Companion" parent="android:Theme.NoTitleBar" >
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
 
     <style name="Theme.Splatoon3_Companion.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
         <!-- Radius of the outer bound of widgets to make the rounded corners -->
@@ -17,4 +21,5 @@
         <!-- Apply padding to avoid the content of the widget colliding with the rounded corners -->
         <item name="appWidgetPadding">16dp</item>
     </style>
+    
 </resources>
