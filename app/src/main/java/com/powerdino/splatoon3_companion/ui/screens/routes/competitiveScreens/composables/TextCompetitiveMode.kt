@@ -1,4 +1,4 @@
-package com.powerdino.splatoon3_companion.ui.composables
+package com.powerdino.splatoon3_companion.ui.screens.routes.competitiveScreens.composables
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
