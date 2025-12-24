@@ -28,14 +28,19 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.powerdino.splatoon3_companion.R
 import com.powerdino.splatoon3_companion.model.Data
+import com.powerdino.splatoon3_companion.model.salmon_run.Salmon
+import com.powerdino.splatoon3_companion.model.salmon_run.resources.SalmonResources
 import com.powerdino.splatoon3_companion.ui.screens.routes.CompetitiveBattlesScreen
 import com.powerdino.splatoon3_companion.ui.screens.routes.RegularBattlesScreen
+import com.powerdino.splatoon3_companion.ui.screens.routes.SalmonRunScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SuccessScreen(
     splatoonData: Data,
+    salmonResources: SalmonResources,
+    salmonSchedules: Salmon
 ){
     val backStack = rememberNavBackStack(RegularBattlesScreen)
 
@@ -45,7 +50,8 @@ fun SuccessScreen(
     
     val bottomNavItems = listOf(
         BottomScreens.Versus,
-        BottomScreens.Competitive
+        BottomScreens.Competitive,
+        BottomScreens.Salmon
     )
 
     Scaffold (
@@ -97,6 +103,7 @@ fun SuccessScreen(
                 when(backStack.last()){
                    RegularBattlesScreen -> bottomSelected =0
                    CompetitiveBattlesScreen ->  bottomSelected = 1
+                    SalmonRunScreen -> bottomSelected = 2
                }
              },
             entryProvider = entryProvider {
@@ -116,6 +123,16 @@ fun SuccessScreen(
                         CompetitiveBattlesScreen(
                             splatoonNormal = splatoonData
                         )
+                    }
+                }
+                entry<SalmonRunScreen>{
+                    Box(
+                        modifier = Modifier.padding(innerPadding)
+                    ){
+                       SalmonRunScreen(
+                           salmonResources = salmonResources,
+                           salmonSchedule = salmonSchedules
+                       )
                     }
                 }
             }

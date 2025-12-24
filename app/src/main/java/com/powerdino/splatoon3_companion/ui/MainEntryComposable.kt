@@ -3,8 +3,8 @@ package com.powerdino.splatoon3_companion.ui
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.powerdino.splatoon3_companion.ui.ViewModel.NetworkState
-import com.powerdino.splatoon3_companion.ui.ViewModel.SplatoonViewModel
+import com.powerdino.splatoon3_companion.ui.viewModels.NetworkState
+import com.powerdino.splatoon3_companion.ui.viewModels.SplatoonViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

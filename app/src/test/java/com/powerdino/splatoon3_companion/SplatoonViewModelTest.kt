@@ -3,8 +3,8 @@ package com.powerdino.splatoon3_companion
 import com.powerdino.splatoon3_companion.fake.FakeDataSource
 import com.powerdino.splatoon3_companion.fake.FakeRepository
 import com.powerdino.splatoon3_companion.rules.TestDispatcherRule
-import com.powerdino.splatoon3_companion.ui.ViewModel.NetworkState
-import com.powerdino.splatoon3_companion.ui.ViewModel.SplatoonViewModel
+import com.powerdino.splatoon3_companion.ui.viewModels.NetworkState
+import com.powerdino.splatoon3_companion.ui.viewModels.SplatoonViewModel
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule

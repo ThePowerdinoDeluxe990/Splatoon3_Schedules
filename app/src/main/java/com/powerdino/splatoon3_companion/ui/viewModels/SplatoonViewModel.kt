@@ -1,4 +1,4 @@
-package com.powerdino.splatoon3_companion.ui.ViewModel
+package com.powerdino.splatoon3_companion.ui.viewModels
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -12,14 +12,19 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.powerdino.splatoon3_companion.SplatoonAppContainer
 import com.powerdino.splatoon3_companion.data.SplatoonRepository
 import com.powerdino.splatoon3_companion.model.Data
+import com.powerdino.splatoon3_companion.model.salmon_run.Salmon
+import com.powerdino.splatoon3_companion.model.salmon_run.resources.SalmonResources
 import kotlinx.coroutines.launch
 
 sealed interface NetworkState {
-    data class Success(val data: Data):NetworkState
+    data class Success(
+        val data: Data,
+        val salmonResources: SalmonResources,
+        val salmonSchedules: Salmon
+    ):NetworkState
     object Error:NetworkState
     object Loading:NetworkState
 }
-
 
 class SplatoonViewModel(private val splatoonRepository: SplatoonRepository): ViewModel() {
     var splatoonNetworkState:NetworkState by mutableStateOf( NetworkState.Loading)
@@ -35,13 +40,14 @@ class SplatoonViewModel(private val splatoonRepository: SplatoonRepository): Vie
             splatoonNetworkState = try{
                 NetworkState.Success(
                     splatoonRepository.getSplatoonData(),
+                    salmonResources = splatoonRepository.getSalmonResources(),
+                    salmonSchedules = splatoonRepository.getSalmonSchedule()
                 )
             }catch (e:java.io.IOException){
                 NetworkState.Error
             }
         }
     }
-
 
     companion object{
         val Factory:ViewModelProvider.Factory = viewModelFactory {

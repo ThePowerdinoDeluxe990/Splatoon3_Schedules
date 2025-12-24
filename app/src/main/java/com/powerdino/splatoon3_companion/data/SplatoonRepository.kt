@@ -1,14 +1,20 @@
 package com.powerdino.splatoon3_companion.data
 
 import com.powerdino.splatoon3_companion.model.Data
+import com.powerdino.splatoon3_companion.model.salmon_run.Salmon
+import com.powerdino.splatoon3_companion.model.salmon_run.resources.SalmonResources
 import com.powerdino.splatoon3_companion.service.RetroFitService
 
 interface SplatoonRepository {
     suspend fun getSplatoonData(): Data
+    suspend fun getSalmonResources(): SalmonResources
+    suspend fun getSalmonSchedule(): Salmon
 }
 
 class NetworkSplatoonRepository(
     private val splatoonApiService:RetroFitService
 ): SplatoonRepository{
     override suspend fun getSplatoonData(): Data = splatoonApiService.getData()
+    override suspend fun getSalmonResources(): SalmonResources = splatoonApiService.getSalmonResources()
+    override suspend fun getSalmonSchedule(): Salmon = splatoonApiService.getSalmonSchedules()
 }

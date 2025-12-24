@@ -7,3 +7,5 @@ import kotlinx.serialization.Serializable
 object RegularBattlesScreen: NavKey
 @Serializable
 object CompetitiveBattlesScreen: NavKey
+@Serializable
+object SalmonRunScreen: NavKey
