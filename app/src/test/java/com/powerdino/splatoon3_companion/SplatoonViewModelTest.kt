@@ -24,7 +24,11 @@ class SplatoonViewModelTest {
 
 
             assertEquals(
-                NetworkState.Success(FakeDataSource.getSplatoonData()),
+                NetworkState.Success(
+                    FakeDataSource.getSplatoonData(),
+                    FakeDataSource.getSalmonResources(),
+                    FakeDataSource.getSalmonShedules()
+                ),
                 splatoonViewModel.splatoonNetworkState
             )
         }

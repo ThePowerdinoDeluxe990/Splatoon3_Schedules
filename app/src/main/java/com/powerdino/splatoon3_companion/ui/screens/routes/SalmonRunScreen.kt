@@ -6,9 +6,9 @@ import androidx.compose.runtime.Composable
 import com.powerdino.splatoon3_companion.data.lists.SalmonRunStageImage
 import com.powerdino.splatoon3_companion.model.salmon_run.Salmon
 import com.powerdino.splatoon3_companion.model.salmon_run.resources.SalmonResources
-import com.powerdino.splatoon3_companion.ui.composables.MapCard
 import com.powerdino.splatoon3_companion.ui.composables.SchedulesTimeComposables
 import com.powerdino.splatoon3_companion.ui.composables.TextSchedule
+import com.powerdino.splatoon3_companion.ui.screens.routes.salmonComposables.SalmonMapCard
 
 @Composable
 fun SalmonRunScreen(
@@ -26,9 +26,10 @@ fun SalmonRunScreen(
             )
 
             salmonResources.stages[items.stage.toString(),]?.let {
-                MapCard(
+                SalmonMapCard(
                     it,
-                    SalmonRunStageImage(items.stage.toString())
+                    SalmonRunStageImage(items.stage.toString()),
+                    weaponsList = TODO()
                 )
             }
         }

@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Normal(
+data class SalmonNormal(
     @SerialName("bigBoss")
     val bigBoss: String,
     @SerialName("endTime")

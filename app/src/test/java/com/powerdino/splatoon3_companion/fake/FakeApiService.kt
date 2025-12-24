@@ -11,10 +11,10 @@ class FakeApiService : RetroFitService {
     }
 
     override suspend fun getSalmonResources(): SalmonResources {
-
+        return FakeDataSource.getSalmonResources()
     }
 
     override suspend fun getSalmonSchedules(): Salmon {
-
+        return FakeDataSource.getSalmonShedules()
     }
 }

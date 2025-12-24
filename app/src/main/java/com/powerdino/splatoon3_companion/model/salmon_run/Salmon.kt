@@ -9,7 +9,7 @@ data class Salmon(
     @SerialName("BigRun")
     val bigRun: List<String>,
     @SerialName("Normal")
-    val normal: List<Normal>,
+    val normal: List<SalmonNormal>,
     @SerialName("TeamContest")
     val teamContest: List<String>
 )
