@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Splatoon 3 schedules</string>
+    <string name="app_name">Octo8</string>
     <string name="current">Current</string>
     <string name="next">Upcoming</string>
     <string name="regular">Regular Battle</string>
@@ -16,6 +16,6 @@
     <string name="testTagRegular">TestTagRegular</string>
     <string name="Error">Network error connection timed out</string>
     <string name="app_widget_description">See current turf war schedules</string>
-
-
+    <string name="menu_about">About</string>
+    <string name="reload">Reload</string>
 </resources>

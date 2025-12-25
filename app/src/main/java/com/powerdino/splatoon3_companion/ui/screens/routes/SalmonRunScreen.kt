@@ -1,11 +1,17 @@
 package com.powerdino.splatoon3_companion.ui.screens.routes
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import com.powerdino.splatoon3_companion.data.lists.SalmonRunStageImage
 import com.powerdino.splatoon3_companion.model.salmon_run.Salmon
 import com.powerdino.splatoon3_companion.model.salmon_run.resources.SalmonResources
+import com.powerdino.splatoon3_companion.ui.composables.ModesAndBosses
 import com.powerdino.splatoon3_companion.ui.composables.SchedulesTimeComposables
 import com.powerdino.splatoon3_companion.ui.composables.TextSchedule
 import com.powerdino.splatoon3_companion.ui.screens.routes.salmonComposables.SalmonMapCard
@@ -20,19 +26,43 @@ fun SalmonRunScreen(
 
             TextSchedule(index)
 
-            SchedulesTimeComposables(
-                startsAt = items.startTime,
-                endsAt = items.endTime
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ){
+                SchedulesTimeComposables(
+                    startsAt = items.startTime,
+                    endsAt = items.endTime
+                )
+
+                ModesAndBosses(
+                    salmonResources.enemy[items.bigBoss].toString()
+                )
+            }
 
             salmonResources.stages[items.stage.toString(),]?.let {
+                val listOfWeapons = remember {
+                    mutableStateListOf<String>()
+                }
+
+                items.weapons.forEach { weapons ->
+                    listOfWeapons.add(
+                        salmonResources.weaponsmain[weapons.toString(),].toString()
+                    )
+                }
+
                 SalmonMapCard(
                     it,
                     SalmonRunStageImage(items.stage.toString()),
-                    weaponsList = TODO()
+                    weaponsList = listOfWeapons,
+                    gearName = when(items.rewardGear.kind.lowercase()){
+                        "clothes" -> salmonResources.gearclothes[items.rewardGear.id.toString()]
+                        "shoes" -> salmonResources.gearshoes[items.rewardGear.id.toString()]
+                        "head" -> salmonResources.gearhead[items.rewardGear.id.toString()]
+                        else -> "Shirt"
+                    }.toString()
                 )
             }
         }
-
     }
 }

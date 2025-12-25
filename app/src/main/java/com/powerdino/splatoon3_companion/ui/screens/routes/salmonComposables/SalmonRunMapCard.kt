@@ -1,17 +1,15 @@
 package com.powerdino.splatoon3_companion.ui.screens.routes.salmonComposables
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -38,7 +36,8 @@ import kotlin.text.Typography.bullet
 fun SalmonMapCard(
     mapName:String,
     mapImage:Int,
-    weaponsList:List<String>
+    weaponsList:List<String>,
+    gearName:String
 ){
     var stateOfArrow by remember {
         mutableStateOf(false)
@@ -50,10 +49,17 @@ fun SalmonMapCard(
         ),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant,
-        )
+        ),
+        modifier = Modifier.padding(
+            horizontal = 10.dp,
+        ).clickable(
+            onClick = {
+                stateOfArrow = !stateOfArrow
+            }
+        ).animateContentSize()
+        
     ){
-        Column(
-        ){
+        Column{
             Image(
                 painter = painterResource(mapImage),
                 contentDescription = mapName,
@@ -61,37 +67,55 @@ fun SalmonMapCard(
                 modifier = Modifier.fillMaxWidth()
                     .size(128.dp)
             )
+
             Text(
                 text=mapName,
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(12.dp),)
-
-            Icon(
-                imageVector = when(stateOfArrow){
-                    false->
-                        Icons.Default.ArrowDropDown
-                    else -> Icons.Default.ArrowDropUp
-                },
-                contentDescription = "Open",
-                modifier = Modifier.clickable(
-                    onClick = {stateOfArrow != stateOfArrow}
-                )
+                modifier = Modifier.padding(12.dp)
             )
 
+
             if(stateOfArrow){
-                val paragraphStyle = ParagraphStyle(textIndent = TextIndent(restLine = 12.sp))
-                Text(
-                    buildAnnotatedString {
-                        weaponsList.forEach {
-                            withStyle(style = paragraphStyle) {
-                                append(bullet)
-                                append("\t\t")
-                                append(it)
-                            }
-                        }
+                Column(
+                    modifier = Modifier.padding(
+                        horizontal = 12.dp,
+                        vertical = 1.dp
+                    )
+                ){
+
+                    Row{
+                        Text(
+                            text = "Gear: ",
+                            fontWeight = FontWeight.Bold,
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+
+                        Text(
+                            text = gearName,
+                            style = MaterialTheme.typography.bodyMedium
+                        )
                     }
-                )
+
+                    Text(
+                        text = "Weapons:",
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    val paragraphStyle = ParagraphStyle(textIndent = TextIndent(restLine = 12.sp))
+                    Text(
+                        text= buildAnnotatedString {
+                            weaponsList.forEach {
+                                withStyle(style = paragraphStyle) {
+                                    append(bullet)
+                                    append("\t\t")
+                                    append(it)
+                                }
+                            }
+                        },
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
             }
         }
     }
@@ -108,6 +132,7 @@ fun PreviewMapCard(){
             "Splattershot",
             "Splattershot",
             "Splattershot",
-        )
+        ),
+        gearName = "Shirt"
     )
 }

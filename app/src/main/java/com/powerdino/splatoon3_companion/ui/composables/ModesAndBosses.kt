@@ -1,4 +1,4 @@
-package com.powerdino.splatoon3_companion.ui.screens.routes.competitiveScreens.composables
+package com.powerdino.splatoon3_companion.ui.composables
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
@@ -19,17 +19,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.powerdino.splatoon3_companion.R
 import com.powerdino.splatoon3_companion.data.lists.CompetitiveModesList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TextCompetitiveMode(
-    competitiveMode:String
+fun ModesAndBosses(
+    modeOrBoss:String
 ){
     var nameOfMode = ""
     var imageOfMode = 0
 
-    when(competitiveMode){
+    when(modeOrBoss){
         "Goal" -> {
             nameOfMode = stringResource(CompetitiveModesList[1].nameState)
             imageOfMode = CompetitiveModesList[1].imageState
@@ -46,6 +47,23 @@ fun TextCompetitiveMode(
             nameOfMode = stringResource(CompetitiveModesList[0].nameState)
             imageOfMode = CompetitiveModesList[0].imageState
         }
+        "Triumvirate"->{
+            nameOfMode = modeOrBoss
+            imageOfMode = R.drawable.s3_icon_triumvirate
+        }
+        "Cohozuna"->{
+            nameOfMode = modeOrBoss
+            imageOfMode = R.drawable.s3_icon_cohozuna
+        }
+        "Horrorboros"->{
+            nameOfMode = modeOrBoss
+            imageOfMode = R.drawable.s3_icon_horrorboros
+        }
+        "Megalodontia"->{
+            nameOfMode = modeOrBoss
+            imageOfMode = R.drawable.s3_icon_megalodontia
+        }
+
     }
     Row(
         modifier = Modifier.padding(
@@ -81,8 +99,8 @@ fun TextCompetitiveMode(
 
 @Preview
 @Composable
-fun PreviewTextCompetitiveMode(){
-    TextCompetitiveMode(
-        competitiveMode = "Area"
+fun PreviewModesAndBosses(){
+    ModesAndBosses(
+        modeOrBoss = "Area"
     )
 }

@@ -20,7 +20,7 @@ import com.powerdino.splatoon3_companion.model.Normal
 import com.powerdino.splatoon3_companion.ui.composables.MapCard
 import com.powerdino.splatoon3_companion.ui.composables.SchedulesTimeComposables
 import com.powerdino.splatoon3_companion.ui.composables.TextSchedule
-import com.powerdino.splatoon3_companion.ui.screens.routes.competitiveScreens.composables.TextCompetitiveMode
+import com.powerdino.splatoon3_companion.ui.composables.ModesAndBosses
 
 @Composable
 fun BankaraScreen(
@@ -44,7 +44,7 @@ fun BankaraScreen(
                 end = 2.dp
             )
         )
-        TextCompetitiveMode(items.bankara.rule)
+        ModesAndBosses(items.bankara.rule)
     }
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -78,7 +78,7 @@ fun BankaraScreen(
             modifier = Modifier.padding(8.dp)
         )
 
-        TextCompetitiveMode(items.bankaraOpen.rule)
+        ModesAndBosses(items.bankaraOpen.rule)
     }
 
     Row(

@@ -15,7 +15,7 @@ import com.powerdino.splatoon3_companion.model.Normal
 import com.powerdino.splatoon3_companion.ui.composables.MapCard
 import com.powerdino.splatoon3_companion.ui.composables.SchedulesTimeComposables
 import com.powerdino.splatoon3_companion.ui.composables.TextSchedule
-import com.powerdino.splatoon3_companion.ui.screens.routes.competitiveScreens.composables.TextCompetitiveMode
+import com.powerdino.splatoon3_companion.ui.composables.ModesAndBosses
 
 @Composable
 fun XBattlesScreen(
@@ -31,7 +31,7 @@ fun XBattlesScreen(
             endsAt = items.endTime
         )
 
-        TextCompetitiveMode(items.x.rule)
+        ModesAndBosses(items.x.rule)
     }
 
     Row(

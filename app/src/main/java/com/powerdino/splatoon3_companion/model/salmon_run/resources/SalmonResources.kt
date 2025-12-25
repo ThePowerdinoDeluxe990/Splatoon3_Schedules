@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class SalmonResources(
     @SerialName("enemy")
-    val enemy: Enemy,
+    val enemy: Map<String,String>,
     @SerialName("events")
     val events: Events,
     @SerialName("gear/clothes")
