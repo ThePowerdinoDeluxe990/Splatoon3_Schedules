@@ -67,7 +67,7 @@ fun AboutDialog(
                 ) {
                     TextButton(
                         onClick = { onDismissRequest() },
-                        modifier = Modifier.padding(2.dp),
+                        modifier = Modifier.padding(1.dp),
                     ) {
                         Text("Dismiss")
                     }
@@ -78,7 +78,7 @@ fun AboutDialog(
                                 context.getString(R.string.repo_url)
                             )
                         },
-                        modifier = Modifier.padding(2.dp),
+                        modifier = Modifier.padding(1.dp),
                     ) {
                         Text("Repo")
                     }
@@ -89,7 +89,7 @@ fun AboutDialog(
                                 context.getString(R.string.api_url)
                             )
                         },
-                        modifier = Modifier.padding(2.dp),
+                        modifier = Modifier.padding(1.dp),
                     ) {
                         Text("Api")
                     }
@@ -100,7 +100,7 @@ fun AboutDialog(
                                 context.getString(R.string.assets_url)
                             )
                         },
-                        modifier = Modifier.padding(2.dp),
+                        modifier = Modifier.padding(1.dp),
                     ) {
                         Text("Assets")
                     }
