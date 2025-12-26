@@ -15,8 +15,8 @@ android {
         applicationId = "com.powerdino.splatoon3_companion"
         minSdk = 24
         targetSdk = 36
-        versionCode = 12
-        versionName = "0.9.9.0"
+        versionCode = 13
+        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -38,6 +38,7 @@ import com.powerdino.splatoon3_companion.R
 import com.powerdino.splatoon3_companion.model.Data
 import com.powerdino.splatoon3_companion.model.salmon_run.Salmon
 import com.powerdino.splatoon3_companion.model.salmon_run.resources.SalmonResources
+import com.powerdino.splatoon3_companion.ui.composables.AboutDialog
 import com.powerdino.splatoon3_companion.ui.screens.routes.CompetitiveBattlesScreen
 import com.powerdino.splatoon3_companion.ui.screens.routes.RegularBattlesScreen
 import com.powerdino.splatoon3_companion.ui.screens.routes.SalmonRunScreen
@@ -55,6 +56,7 @@ fun SuccessScreen(
     var bottomSelected by rememberSaveable {
         mutableIntStateOf(0)
     }
+    var openDialog by remember { mutableStateOf(false)}
 
     var expanded by remember { mutableStateOf(false) }
     
@@ -76,7 +78,8 @@ fun SuccessScreen(
                         stringResource(R.string.app_name),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
-                    ) },
+                    )
+                },
                 actions = {
                     IconButton(
                         onClick = {
@@ -94,8 +97,16 @@ fun SuccessScreen(
                     ) {
                         DropdownMenuItem(
                             text = { Text(stringResource(R.string.menu_about)) },
-                            onClick = { /* Do something... */ }
+                            onClick = {
+                                openDialog = true
+                            }
                         )
+                        if(openDialog) {
+                            AboutDialog {
+                                openDialog = false
+                                expanded = false
+                            }
+                        }
 
                     }
                 }
@@ -167,7 +178,6 @@ fun SuccessScreen(
                        )
                     }
                 }
-
             }
         )
     }
