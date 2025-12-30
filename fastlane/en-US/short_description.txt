@@ -1,0 +1,1 @@
+An app for checking current Splatoon 3 map schedules

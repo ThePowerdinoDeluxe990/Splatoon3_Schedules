@@ -2,6 +2,7 @@ package com.powerdino.splatoon3_companion.ui.composables
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import kotlin.time.Duration.Companion.hours
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
@@ -12,8 +13,9 @@ fun TimeComposable(
 ){
     val instant = Instant.parse(time)
 
+    val currentTime = instant + 1.hours
     Text(
-        text = instant.toString()
+        text = currentTime.toString()
             .substringAfterLast("T")
             .replace("Z",""),
     )

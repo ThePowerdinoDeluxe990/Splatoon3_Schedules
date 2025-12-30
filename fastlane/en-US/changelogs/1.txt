@@ -1,0 +1,3 @@
+v1.0.1:
+- First F-Droid release!
+- Fixed time and loading screen
