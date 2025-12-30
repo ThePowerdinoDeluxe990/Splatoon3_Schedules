@@ -1,4 +1,4 @@
-An app for checking all this schedules:
+An app for checking all this schedules from Splatoon 3:
 - Regular Battles
 - Anarchy Battles (Series/Open)
 - X Battles
