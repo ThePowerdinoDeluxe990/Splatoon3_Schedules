@@ -26,6 +26,7 @@ data class SalmonResources(
     val tides: Tides,
     @SerialName("weapons/main")
     val weaponsmain: Map<String, String>,
+
     @SerialName("weapons/special")
     val weaponsspecial: Map<String,String>
 )

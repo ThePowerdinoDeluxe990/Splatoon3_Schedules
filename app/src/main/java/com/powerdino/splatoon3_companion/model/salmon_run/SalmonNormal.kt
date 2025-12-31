@@ -13,7 +13,7 @@ data class SalmonNormal(
     @SerialName("phaseId")
     val phaseId: String,
     @SerialName("rareWeapons")
-    val rareWeapons: List<String>,
+    val rareWeapons: List<Int>,
     @SerialName("rewardGear")
     val rewardGear: RewardGear,
     @SerialName("stage")

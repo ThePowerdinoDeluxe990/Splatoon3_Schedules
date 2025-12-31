@@ -46,9 +46,15 @@ fun SalmonRunScreen(
                 }
 
                 items.weapons.forEach { weapons ->
-                    listOfWeapons.add(
-                        salmonResources.weaponsmain[weapons.toString(),].toString()
-                    )
+                    when(weapons){
+                        -1 ->listOfWeapons.add(
+                            "Wildcard"
+                        )
+                        else -> listOfWeapons.add(
+                            salmonResources.weaponsmain[weapons.toString(),].toString()
+                        )
+                    }
+
                 }
 
                 SalmonMapCard(
