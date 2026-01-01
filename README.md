@@ -6,3 +6,5 @@ An app to check current splatoon 3 map schedules made with kotlin and jetpack co
 API: https://splatoon.oatmealdome.me/
 
 Assets: https://splatoonwiki.org/
+
+This app is not affiliated with Nintendo. All product names, logos, and brands are property of their respective owners.
