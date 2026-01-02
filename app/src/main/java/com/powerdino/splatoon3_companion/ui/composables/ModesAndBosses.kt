@@ -25,7 +25,8 @@ import com.powerdino.splatoon3_companion.data.lists.CompetitiveModesList
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ModesAndBosses(
-    modeOrBoss:String
+    modeOrBoss:String,
+    bossName:String?
 ){
     var nameOfMode = ""
     var imageOfMode = 0
@@ -47,20 +48,20 @@ fun ModesAndBosses(
             nameOfMode = stringResource(CompetitiveModesList[0].nameState)
             imageOfMode = CompetitiveModesList[0].imageState
         }
-        "Triumvirate"->{
-            nameOfMode = modeOrBoss
+        "Triple"->{
+            nameOfMode = bossName ?: modeOrBoss
             imageOfMode = R.drawable.s3_icon_triumvirate
         }
-        "Cohozuna"->{
-            nameOfMode = modeOrBoss
+        "SakelienGiant"->{
+            nameOfMode = bossName ?: modeOrBoss
             imageOfMode = R.drawable.s3_icon_cohozuna
         }
-        "Horrorboros"->{
-            nameOfMode = modeOrBoss
+        "SakeRope"->{
+            nameOfMode = bossName ?: modeOrBoss
             imageOfMode = R.drawable.s3_icon_horrorboros
         }
-        "Megalodontia"->{
-            nameOfMode = modeOrBoss
+        "SakeJaw"->{
+            nameOfMode = bossName ?: modeOrBoss
             imageOfMode = R.drawable.s3_icon_megalodontia
         }
 
@@ -101,6 +102,7 @@ fun ModesAndBosses(
 @Composable
 fun PreviewModesAndBosses(){
     ModesAndBosses(
-        modeOrBoss = "Area"
+        modeOrBoss = "Area",
+        bossName = null
     )
 }

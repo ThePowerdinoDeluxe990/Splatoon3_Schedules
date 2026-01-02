@@ -31,7 +31,7 @@ fun XBattlesScreen(
             endsAt = items.endTime
         )
 
-        ModesAndBosses(items.x.rule)
+        ModesAndBosses(items.x.rule, null)
     }
 
     Row(

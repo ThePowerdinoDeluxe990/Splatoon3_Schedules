@@ -21,7 +21,7 @@ fun SalmonRunScreen(
     salmonResources: SalmonResources,
     salmonSchedule: Salmon
 ){
-    LazyColumn() {
+    LazyColumn{
         itemsIndexed(salmonSchedule.normal){ index, items ->
 
             TextSchedule(index)
@@ -36,6 +36,7 @@ fun SalmonRunScreen(
                 )
 
                 ModesAndBosses(
+                    items.bigBoss,
                     salmonResources.enemy[items.bigBoss].toString()
                 )
             }

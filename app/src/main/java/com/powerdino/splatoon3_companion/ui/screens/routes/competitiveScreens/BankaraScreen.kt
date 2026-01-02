@@ -44,7 +44,7 @@ fun BankaraScreen(
                 end = 2.dp
             )
         )
-        ModesAndBosses(items.bankara.rule)
+        ModesAndBosses(items.bankara.rule, null)
     }
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -78,7 +78,7 @@ fun BankaraScreen(
             modifier = Modifier.padding(8.dp)
         )
 
-        ModesAndBosses(items.bankaraOpen.rule)
+        ModesAndBosses(items.bankaraOpen.rule, null)
     }
 
     Row(

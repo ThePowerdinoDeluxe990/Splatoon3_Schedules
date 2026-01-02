@@ -3,6 +3,7 @@
 
 An app to check current splatoon 3 map schedules made with kotlin and jetpack compose
 
+
 TODO: 
 * Splatfests and Events schedules
 * Support for diferent languages

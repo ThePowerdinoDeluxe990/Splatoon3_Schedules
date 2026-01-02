@@ -3,6 +3,7 @@ import com.powerdino.splatoon3_companion.model.Data
 import com.powerdino.splatoon3_companion.model.salmon_run.Salmon
 import com.powerdino.splatoon3_companion.model.salmon_run.resources.SalmonResources
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface RetroFitService{
 
@@ -12,8 +13,10 @@ interface RetroFitService{
         //Use this get for testing splatfest screens
         suspend fun getData(): Data
 
-        @GET("api/v1/three/resources/coop?language=USen")
-        suspend fun getSalmonResources(): SalmonResources
+        @GET("api/v1/three/resources/coop")
+        suspend fun getSalmonResources(
+            @Query("language") language:String
+        ): SalmonResources
 
         @GET("api/v1/three/coop/phases?count=3")
         suspend fun getSalmonSchedules(): Salmon
