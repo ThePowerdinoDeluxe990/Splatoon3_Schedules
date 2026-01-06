@@ -5,9 +5,7 @@ An app to check current splatoon 3 map schedules made with kotlin and jetpack co
 ## Screenshots:
 
 <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/1.png " alt="App Icon" width="200" />
-
 <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/2.png " alt="App Icon" width="200" />
-
 <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/3.png " alt="App Icon" width="200" />
 
 TODO: 
