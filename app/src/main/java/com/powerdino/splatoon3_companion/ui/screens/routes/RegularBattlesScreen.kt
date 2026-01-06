@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.powerdino.splatoon3_companion.R
 import com.powerdino.splatoon3_companion.data.lists.listOfMpMaps
 import com.powerdino.splatoon3_companion.model.Data
+import com.powerdino.splatoon3_companion.model.resources_versus.ResourcesVersus
 import com.powerdino.splatoon3_companion.ui.composables.MapCard
 import com.powerdino.splatoon3_companion.ui.composables.SchedulesTimeComposables
 import com.powerdino.splatoon3_companion.ui.composables.TextSchedule
@@ -25,6 +26,7 @@ import com.powerdino.splatoon3_companion.ui.composables.TextSchedule
 @Composable
 fun RegularBattlesScreen (
     splatoonNormal: Data,
+    versusResources: ResourcesVersus
 ){
     Column (
         modifier = Modifier.testTag(
@@ -48,13 +50,13 @@ fun RegularBattlesScreen (
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ){
-                    items.regular.stages.forEach {it ->
+                    items.regular.stages.forEach {
                         Box(
                             modifier = Modifier.padding(horizontal = 4.dp)
                                 .weight(1f)
                         ){
                             MapCard(
-                                mapName = stringResource(listOfMpMaps[it-1].nameState),
+                                mapName = versusResources.stages[it.toString()].toString(),
 
                                 mapImage = listOfMpMaps[it-1].imageState
                             )

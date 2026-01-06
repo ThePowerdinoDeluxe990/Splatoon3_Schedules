@@ -64,7 +64,6 @@ fun ModesAndBosses(
             nameOfMode = bossName ?: modeOrBoss
             imageOfMode = R.drawable.s3_icon_megalodontia
         }
-
     }
     Row(
         modifier = Modifier.padding(

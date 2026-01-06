@@ -9,7 +9,6 @@ import com.powerdino.splatoon3_companion.ui.screens.SuccessScreen
 
 @Composable
 fun NetworkComposable(
-    splatoonViewModel: SplatoonViewModel,
     networkState: NetworkState,
 ){
     when(networkState){
@@ -17,7 +16,8 @@ fun NetworkComposable(
             SuccessScreen(
                 splatoonData = networkState.data,
                 salmonResources = networkState.salmonResources,
-                salmonSchedules = networkState.salmonSchedules
+                salmonSchedules = networkState.salmonSchedules,
+                versusResources = networkState.versusResources
             )
         }
         is NetworkState.Loading -> {

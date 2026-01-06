@@ -1,5 +1,6 @@
 package com.powerdino.splatoon3_companion.service
 import com.powerdino.splatoon3_companion.model.Data
+import com.powerdino.splatoon3_companion.model.resources_versus.ResourcesVersus
 import com.powerdino.splatoon3_companion.model.salmon_run.Salmon
 import com.powerdino.splatoon3_companion.model.salmon_run.resources.SalmonResources
 import retrofit2.http.GET
@@ -17,6 +18,11 @@ interface RetroFitService{
         suspend fun getSalmonResources(
             @Query("language") language:String
         ): SalmonResources
+
+        @GET("api/v1/three/resources/versus")
+        suspend fun getVersusResources(
+            @Query("language") language: String
+        ): ResourcesVersus
 
         @GET("api/v1/three/coop/phases?count=3")
         suspend fun getSalmonSchedules(): Salmon

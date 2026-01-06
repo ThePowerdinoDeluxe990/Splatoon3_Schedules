@@ -12,6 +12,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.powerdino.splatoon3_companion.SplatoonAppContainer
 import com.powerdino.splatoon3_companion.data.SplatoonRepository
 import com.powerdino.splatoon3_companion.model.Data
+import com.powerdino.splatoon3_companion.model.resources_versus.ResourcesVersus
 import com.powerdino.splatoon3_companion.model.salmon_run.Salmon
 import com.powerdino.splatoon3_companion.model.salmon_run.resources.SalmonResources
 import kotlinx.coroutines.launch
@@ -20,7 +21,8 @@ sealed interface NetworkState {
     data class Success(
         val data: Data,
         val salmonResources: SalmonResources,
-        val salmonSchedules: Salmon
+        val salmonSchedules: Salmon,
+        val versusResources: ResourcesVersus
     ):NetworkState
     object Error:NetworkState
     object Loading:NetworkState
@@ -41,9 +43,10 @@ class SplatoonViewModel(private val splatoonRepository: SplatoonRepository): Vie
                 NetworkState.Success(
                     splatoonRepository.getSplatoonData(),
                     salmonResources = splatoonRepository.getSalmonResources(),
-                    salmonSchedules = splatoonRepository.getSalmonSchedule()
+                    salmonSchedules = splatoonRepository.getSalmonSchedule(),
+                    versusResources = splatoonRepository.getVersusResources()
                 )
-            }catch (e:java.io.IOException){
+            }catch (_:java.io.IOException){
                 NetworkState.Error
             }
         }
