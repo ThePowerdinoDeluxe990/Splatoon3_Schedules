@@ -11,6 +11,13 @@ android {
     namespace = "com.powerdino.splatoon3_companion"
     compileSdk = 36
 
+    dependenciesInfo {
+        // Disables dependency metadata when building APKs.
+        includeInApk = false
+        // Disables dependency metadata when building Android App Bundles.
+        includeInBundle = false
+    }
+    
     defaultConfig {
         applicationId = "com.powerdino.splatoon3_companion"
         minSdk = 24

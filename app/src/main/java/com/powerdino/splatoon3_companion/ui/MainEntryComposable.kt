@@ -16,7 +16,6 @@ fun MainEntryComposable(){
 
 
     NetworkComposable(
-        splatoonViewModel = splatoonViewModel,
         networkState = networkStateAndInfo
 
     )

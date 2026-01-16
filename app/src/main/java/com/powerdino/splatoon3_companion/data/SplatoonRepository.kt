@@ -19,7 +19,7 @@ class NetworkSplatoonRepository(
 ): SplatoonRepository{
 
     override suspend fun getSplatoonData(): Data = splatoonApiService.getData()
-    override suspend fun getSalmonResources(): SalmonResources = splatoonApiService.getSalmonResources(getLocale())
+    override suspend fun getSalmonResources(): SalmonResources = splatoonApiService.getSalmonResources("USen")
     override suspend fun getSalmonSchedule(): Salmon = splatoonApiService.getSalmonSchedules()
-    override suspend fun getVersusResources(): ResourcesVersus = splatoonApiService.getVersusResources(getLocale())
+    override suspend fun getVersusResources(): ResourcesVersus = splatoonApiService.getVersusResources("USen")
 }
