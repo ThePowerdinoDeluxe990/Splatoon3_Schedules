@@ -17,12 +17,12 @@ android {
         // Disables dependency metadata when building Android App Bundles.
         includeInBundle = false
     }
-    
+
     defaultConfig {
         applicationId = "com.powerdino.splatoon3_companion"
         minSdk = 24
         targetSdk = 36
-        versionCode = 15
+        versionCode = 16
         versionName = "1.0.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
